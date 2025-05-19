@@ -1,4 +1,6 @@
 obj/
 */make/*.list
 tests/*-tester
+static_tester/
+monkey_tester/
 *.pdf

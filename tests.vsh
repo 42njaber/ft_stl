@@ -3,6 +3,8 @@
 export MAKE="make -Rrd --warn-undefined-variables"
 export MAKE="make -Rrk --warn-undefined-variables"
 
+:lcd tests
+
 #> Compile & Run
 ${MAKE:-make}
 diff <(
@@ -16,6 +18,8 @@ diff <(
 
 ${MAKE:-make} fclean
 ${MAKE:-make} re
+
+ls -lh $(which c++)
 
 c++ --version
 
