@@ -1,7 +1,7 @@
 # VIM: let b:vsh_lvl=2
 
 export MAKE="make -Rrd --warn-undefined-variables"
-export MAKE="make -Rrk --warn-undefined-variables"
+export MAKE="make -rk --warn-undefined-variables"
 
 :lcd tests
 

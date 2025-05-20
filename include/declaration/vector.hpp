@@ -4,17 +4,23 @@
 
 # include "declaration/common.hpp"
 # include "declaration/requirements.hpp"
-# include "declaration/iterators.hpp"
+# include "declaration/iterator.hpp"
 
 # include <memory>
 
 namespace ft {
 
-	template< typename T, typename Allocator=std::allocator<T> >
+	template< typename T, typename A=std::allocator<T> >
 	class vector :
-		public _Container<T,Allocator>,
-		private copy_assignable< T >
+		public _Container<T,A>,
+		public iterator::_IterableContainer<contiguous_iterator_tag,vector<T,A> >,
+		private is_copy_assignable<T>,
+		private is_copy_constructible<T>,
+		private is_allocator<A,T>
 	{
+		REQUIRE_ATTR static void _require(is_container<vector, T>) {};
+
+	public:
 		// explicit vector( const Allocator& alloc = Allocator() );
 		// explicit vector( size_type count, const T& value = T(), const Allocator& alloc = Allocator() );
 		// template< class InputIt >
